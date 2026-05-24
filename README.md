@@ -2,6 +2,8 @@
 
 A browser-based password security toolkit built during the **Learning Hackathon: Spec Driven Development**.
 
+[**Try it live →**](https://bernardo-r-o-carvalho.github.io/YourPassword/yourpassword.html)
+
 ---
 
 ## Inspiration

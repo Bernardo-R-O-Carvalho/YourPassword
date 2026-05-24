@@ -1,6 +1,6 @@
 # YourPassword
 
-A browser-based password security toolkit built during the **Learning Hackathon: Spec Driven Development**.
+A browser-based password security toolkit built during the **Learning Hackathon: Spec Driven Development** and expanded afterwards with additional features and security improvements.
 
 [**Try it live →**](https://bernardo-r-o-carvalho.github.io/YourPassword/yourpassword.html)
 
@@ -105,6 +105,18 @@ The hardest challenge was deciding what not to build. The spec document saved me
 **Privacy can be a feature.** The k-anonymity implementation and the history tab's deliberate omission of password text are both worth explaining to users. People respond well to transparency about how their data is handled.
 
 **The spec-driven process produces artifacts you actually reuse.** The scope doc, PRD, and technical spec aren't just hackathon deliverables — they're templates I'll carry into future projects.
+
+---
+
+## Known limitations
+
+**Entropy calculation assumes uniform randomness.** The formula `length × log₂(pool)` gives the theoretical maximum entropy for a random password. For human-chosen passwords, actual entropy is always lower — the pattern detection compensates for this partially, but it's not a substitute for a full probabilistic model like zxcvbn.
+
+**Breach check requires an internet connection.** The HaveIBeenPwned API call won't work offline. The tool fails gracefully, but there's no offline fallback.
+
+**Pattern detection is heuristic, not exhaustive.** The tool catches the most common patterns — leet-speak, keyboard walks, dates, dictionary words — but it doesn't have a full dictionary. A password built around an obscure proper noun won't be flagged even if it's weak.
+
+**Crack time is a mental model, not a guarantee.** The 10B guesses/second figure assumes a well-optimized GPU cluster attacking a weak hash (MD5 or SHA-1). Against bcrypt or Argon2, real-world crack times are orders of magnitude longer. Against a state actor with dedicated hardware, shorter.
 
 ---
 
